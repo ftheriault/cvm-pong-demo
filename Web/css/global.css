@@ -3,7 +3,76 @@
 	padding:0;
 }
 
+html, body {
+	height:100%;
+}
+
 .container {
-	margin:50px auto;
+	margin:0px auto;
+	padding-top:50px;
 	width:800px;
+}
+
+.bottom-menu {
+	position:absolute;
+	bottom:30px;
+}
+
+.graphics {
+	background-color: black;
+	background-image: url('../images/background.jpg');
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.doge-section {
+	display: none;
+	color:white;
+	font-size:30px;
+}
+
+#doge-wow {
+	position:absolute;
+	right:200px;
+	bottom:250px;
+	transform:rotate(-50deg);
+}
+
+#doge-very {
+	position:absolute;
+	right:380px;
+	bottom:150px;
+	transform:rotate(-10deg);
+}
+
+#doge-much {
+	position:absolute;
+	right:110px;
+	bottom:350px;
+	transform:rotate(-10deg);
+}
+
+#doge-such {
+	position:absolute;
+	right:300px;
+	bottom:40px;
+	transform:rotate(-20deg);
+}
+
+#doge-ma {
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	width:200px;
+	height:200px;
+	background-image: url('../images/lavoie.jpg');
+}
+
+#doge-face {
+	position:absolute;
+	right:30px;
+	bottom:45px;
+	width:160px;
+	height:160px;
+	background-image: url('../images/doge.png');
 }

@@ -14,6 +14,8 @@ var ball = null;
 var gui = null;
 var paddle = null;
 
+var enhancedGraphics = false;
+
 $(function() {
 	ctx = document.getElementById("canvas").getContext("2d");
 
@@ -58,4 +60,19 @@ function tick() {
 	}
 
 	window.requestAnimationFrame(tick);
+}
+
+function startPhysics1() {
+
+}
+
+function startGraphics() {
+	$("html").addClass("graphics");
+	enhancedGraphics = true;
+
+	setTimeout(dogeAnimation, 2000);
+}
+
+function startPhysics2() {
+
 }

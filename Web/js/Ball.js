@@ -40,6 +40,11 @@ Ball.prototype.tick = function() {
 	ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
 	ctx.restore();
 
-	ctx.fillStyle = '#black';
+	ctx.fillStyle = 'black';
+
+	if (enhancedGraphics) {
+		ctx.fillStyle = 'white';		
+	}
+
 	ctx.fill();
 }

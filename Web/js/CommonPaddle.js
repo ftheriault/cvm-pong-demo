@@ -41,6 +41,11 @@ CommonPaddle.prototype.tick = function() {
 	if (this.y - this.height/2 < 0) this.y = this.height/2;
 	if (this.y + this.height/2 > height) this.y = height - this.height/2;
 
-	ctx.fillColor = "black";
+	ctx.fillStyle = "black";
+
+	if (enhancedGraphics) {
+		ctx.fillStyle = "white";		
+	}
+
 	ctx.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
 }

@@ -10,7 +10,6 @@ Wall.prototype.constructor = Wall;
 Wall.prototype.executeLogic = function(collisionPoint) {
 
 	if (collisionPoint != null) {
-		// North Wall
 		ball.angle = Math.PI - ball.angle;
 
 		if (this.callback != null) {

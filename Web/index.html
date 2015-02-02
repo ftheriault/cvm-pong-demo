@@ -11,10 +11,27 @@
 	<script src="js/Wall.js"></script>
 	<script src="js/Ball.js"></script>
 	<script src="js/GUI.js"></script>
+	<script src="js/animation-doge.js"></script>
 </head>
 <body>
-	<div class="container">
-		<canvas height="400" width="800" id="canvas"></canvas>
+	<div id="main-section">
+		<div class="container">
+			<canvas height="400" width="800" id="canvas"></canvas>
+		</div>
+		<div class="bottom-menu">
+			<button type="button" onclick="startPhysics1()">Physics</button>
+			<button type="button" onclick="startGraphics()">Graphics</button>
+			<button type="button" onclick="startPhysics3()">Physics v2 (breaks)</button>
+		</div>
+
+		
+		<div class="doge-section" id="doge-ma"></div>
+		<div class="doge-section" id="doge-face"></div>
+
+		<div class="doge-section" id="doge-wow">WOW!</div>
+		<div class="doge-section" id="doge-very">Very Web!</div>
+		<div class="doge-section" id="doge-such">Such better!</div>
+		<div class="doge-section" id="doge-much">Much design!</div>
 	</div>
 </body>
 </html>
