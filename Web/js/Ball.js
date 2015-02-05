@@ -1,19 +1,25 @@
-function Ball(radius) {
-	this.speed = 4;
+function Ball(radius, onCollision) {
+	this.speed = 7;
 	this.radius = radius;
 	this.newRound();
+	this.onCollision = onCollision;
 }
 
 Ball.prototype.newRound = function() {
 	this.x = Math.random() * width/2 + 40;
 	this.y = Math.random() * height/2 + 40;
-	this.angle = Math.random() * Math.PI/2 + Math.PI/4; // cadran 1 and 4 (0 to 180)
+	this.angle = Math.random() * Math.PI/4 + Math.PI/10; // cadran 1 and 4 (0 to 180)
 	this.goingRight = true;	
 }
 
 Ball.prototype.paddleHit = function () {
 	this.goingRight = !this.goingRight;
 	this.angle += Math.random() * (Math.PI/5) - Math.PI/10;
+
+	if(this.onCollision != null)
+	{
+		this.onCollision();
+	}
 }
 
 Ball.prototype.tick = function() {
