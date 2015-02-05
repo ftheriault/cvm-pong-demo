@@ -21,7 +21,8 @@ var enhancedParticle = false;
 //Particle system
 var proton = null;
 var emitter = null;
-var emitterPaddle = null;
+var emitterLeftPaddle = null;
+var emitterRightPaddle = null;
 
 $(function() {
 	canvas = document.getElementById("canvas");
@@ -56,6 +57,38 @@ $(function() {
 	initParticle();
 });
 
+function createPaddleEmitter(direction)
+{
+	//Paddle emitter
+	var myEmitter = new Proton.Emitter();
+	//set Rate
+	myEmitter.rate = new Proton.Rate(Proton.getSpan(10, 20), 0.1);
+	//add Initialize
+	myEmitter.addInitialize(new Proton.Radius(3, 6));
+	myEmitter.addInitialize(new Proton.Life(1, 2));
+	//myEmitter.addInitialize(new Proton.V(new Proton.Span(1,3), new Proton.Span(0, 10), 'vector'));
+
+	if(direction ==  "left")
+	{
+		myEmitter.addInitialize(new Proton.V(new Proton.Span(0.5, 3), new Proton.Span(90, 45, true), 'polar'));
+	}else
+	{
+		myEmitter.addInitialize(new Proton.V(new Proton.Span(0.5, 3), new Proton.Span(-90, 45, true), 'polar'));
+	}
+	//Behavior
+	myEmitter.addBehaviour(new Proton.Gravity(3));
+	myEmitter.addBehaviour(new Proton.Color('#ffffff', ['#ff0000', '#555500'], Infinity, Proton.easeOutSine));
+	myEmitter.addBehaviour(new Proton.Alpha(1, 0.1));
+	myEmitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(0, 0, canvas.width, canvas.height), 'bound'));
+	myEmitter.damping = 0.02;
+
+	//set emitter position
+	myEmitter.p.x = canvas.width / 2;
+	myEmitter.p.y = canvas.height / 2;
+
+	return myEmitter;
+}
+
 function initParticle()
 {
 	proton = new Proton();
@@ -81,26 +114,12 @@ function initParticle()
 	//add emitter to the proton
 	proton.addEmitter(emitter);
 
-	//Paddle emitter
-	emitterPaddle = new Proton.Emitter();
-	//set Rate
-	emitterPaddle.rate = new Proton.Rate(Proton.getSpan(50, 70), 0.1);
-	//add Initialize
-	emitterPaddle.addInitialize(new Proton.Radius(3, 6));
-	emitterPaddle.addInitialize(new Proton.Life(1, 2));
-	emitterPaddle.addInitialize(new Proton.V(new Proton.Span(2,5), new Proton.Span(0, 360), 'polar'));
-	//Behavior
-	emitterPaddle.addBehaviour(new Proton.Gravity(3));
-	emitterPaddle.addBehaviour(new Proton.Color('#ffffff', ['#ff0000', '#555500'], Infinity, Proton.easeOutSine));
-	emitterPaddle.addBehaviour(new Proton.Alpha(1, 0.1));
-	emitterPaddle.addBehaviour(new Proton.CrossZone(new Proton.RectZone(0, 0, canvas.width, canvas.height), 'bound'));
-	emitterPaddle.damping = 0.02;
-
-	//set emitter position
-	emitterPaddle.p.x = canvas.width / 2;
-	emitterPaddle.p.y = canvas.height / 2;
 	//add emitter to the proton
-	proton.addEmitter(emitterPaddle);
+	emitterLeftPaddle = createPaddleEmitter("left")
+	proton.addEmitter(emitterLeftPaddle);
+
+	emitterRightPaddle = createPaddleEmitter("right")
+	proton.addEmitter(emitterRightPaddle);
 
 	// add canvas renderer
 	var renderer = new Proton.Renderer('canvas', proton, canvas);
@@ -143,10 +162,11 @@ function sideWallCollision() {
 function ballHitPaddle() {
 	if(enhancedParticle)
 	{
-		emitterPaddle.p.x = ball.x;
-		emitterPaddle.p.y = ball.y;
-		emitterPaddle.emit();
-		setTimeout(function(){emitterPaddle.stopEmit()},200);
+		emitterLeftPaddle.p.x = ball.x;
+		emitterLeftPaddle.p.y = ball.y;
+
+		emitterRightPaddle.p.x = ball.x;
+		emitterRightPaddle.p.y = ball.y;
 
 		if(ball.x > canvas.width / 2)
 		{
@@ -155,13 +175,17 @@ function ballHitPaddle() {
 				distance : "10",
 				times : "1"
 			} );
+			emitterRightPaddle.emit();
+			setTimeout(function(){emitterRightPaddle.stopEmit()},200);
 		}else
 		{
 			$( ".container" ).effect( "shake", {
 			direction : "left",
 			distance : "10",
 			times : "1"
-		} );
+			} );
+			emitterLeftPaddle.emit();
+			setTimeout(function(){emitterLeftPaddle.stopEmit()},200);
 		}
 
 	}
