@@ -4,7 +4,7 @@ var spriteList = [];
 
 var width = 800;
 var height = 400;
-var wallThickness = 6;
+var wallThickness = 8;
 var ballRadius = 8;
 
 var paddleWidth = 6;
@@ -171,16 +171,16 @@ function sideWallCollision() {
 
 		if(ball.y < canvas.height / 2)
 		{
-			$( ".container" ).effect( "shake", {
+			$( "#shaker" ).effect( "shake", {
 				direction : "up",
-				distance : "10",
+				distance : "5",
 				times : "1"
 			} );
 		}else
 		{
-			$( ".container" ).effect( "shake", {
+			$( "#shaker" ).effect( "shake", {
 			direction : "down",
-			distance : "10",
+			distance : "5",
 			times : "1"
 		} );
 		}
@@ -198,18 +198,18 @@ function ballHitPaddle() {
 
 		if(ball.x > canvas.width / 2)
 		{
-			$( ".container" ).effect( "shake", {
+			$( "#shaker" ).effect( "shake", {
 				direction : "right",
-				distance : "10",
+				distance : "5",
 				times : "1"
 			} );
 			emitterRightPaddle.emit();
 			setTimeout(function(){emitterRightPaddle.stopEmit()},200);
 		}else
 		{
-			$( ".container" ).effect( "shake", {
+			$( "#shaker" ).effect( "shake", {
 			direction : "left",
-			distance : "10",
+			distance : "5",
 			times : "1"
 			} );
 			emitterLeftPaddle.emit();

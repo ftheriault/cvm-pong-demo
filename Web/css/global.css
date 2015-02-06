@@ -34,35 +34,35 @@ html, body {
 #doge-wow {
 	position:absolute;
 	right:200px;
-	bottom:250px;
-	transform:rotate(-50deg);
+	top:250px;
+	transform:rotate(50deg);
 }
 
 #doge-very {
 	position:absolute;
 	right:380px;
-	bottom:150px;
+	top:150px;
 	transform:rotate(-10deg);
 }
 
 #doge-much {
 	position:absolute;
 	right:110px;
-	bottom:350px;
+	top:350px;
 	transform:rotate(-10deg);
 }
 
 #doge-such {
 	position:absolute;
 	right:300px;
-	bottom:60px;
+	top:60px;
 	transform:rotate(-20deg);
 }
 
 #doge-ma {
 	position:absolute;
 	right:10px;
-	bottom:10px;
+	top:30px;
 	width:200px;
 	height:200px;
 	background-image: url('../images/lavoie.jpg');
@@ -71,7 +71,7 @@ html, body {
 #doge-face {
 	position:absolute;
 	right:30px;
-	bottom:45px;
+	top:45px;
 	width:160px;
 	height:160px;
 	background-image: url('../images/doge.png');

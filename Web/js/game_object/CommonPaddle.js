@@ -1,7 +1,7 @@
 function CommonPaddle(x, y, width, height) {
 	this.x = x;
 	this.y = y;
-	this.speed = 6;	
+	this.speed = 5;	
 	this.width = width;
 	this.height = height;
 }
