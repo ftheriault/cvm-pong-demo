@@ -65,10 +65,10 @@ function createPaddleEmitter(direction)
 	//Paddle emitter
 	var myEmitter = new Proton.Emitter();
 	//set Rate
-	myEmitter.rate = new Proton.Rate(Proton.getSpan(10, 20), 0.1);
+	myEmitter.rate = new Proton.Rate(Proton.getSpan(8, 12), 0.1);
 	//add Initialize
-	myEmitter.addInitialize(new Proton.Radius(5, 8));
-	myEmitter.addInitialize(new Proton.Life(1, 2));
+	myEmitter.addInitialize(new Proton.Radius(5,8));
+	myEmitter.addInitialize(new Proton.Life(2, 3));
 	//myEmitter.addInitialize(new Proton.V(new Proton.Span(1,3), new Proton.Span(0, 10), 'vector'));
 
 	if(direction ==  "left")
@@ -79,9 +79,9 @@ function createPaddleEmitter(direction)
 		myEmitter.addInitialize(new Proton.V(new Proton.Span(0.5, 3), new Proton.Span(-90, 45, true), 'polar'));
 	}
 	//Behavior
-	myEmitter.addBehaviour(new Proton.Gravity(4));
-	myEmitter.addBehaviour(new Proton.Color('#ffffff', ['#ff0000', '#555500'], Infinity, Proton.easeOutSine));
-	myEmitter.addBehaviour(new Proton.Alpha(1, 0.1));
+	myEmitter.addBehaviour(new Proton.Gravity(15));
+	myEmitter.addBehaviour(new Proton.Color('#000000', ['#ff0000', '#ffffff']));
+	myEmitter.addBehaviour(new Proton.Alpha(1, 1));
 	myEmitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(0, 0, canvas.width, canvas.height), 'bound'));
 	myEmitter.damping = 0.02;
 
@@ -96,7 +96,7 @@ function createPaddleEmitter(direction)
 //*****************************************
 function createBallFire(image) {
 	fireEmitter = new Proton.Emitter();
-	fireEmitter.rate = new Proton.Rate(new Proton.Span(1, 1), .06);
+	fireEmitter.rate = new Proton.Rate(new Proton.Span(1, 1), .02);
 	fireEmitter.addInitialize(new Proton.Mass(1));
 	fireEmitter.addBehaviour(new Proton.Gravity());
 	fireEmitter.addInitialize(new Proton.ImageTarget(image));
