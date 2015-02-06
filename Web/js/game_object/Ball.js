@@ -47,6 +47,10 @@ Ball.prototype.tick = function() {
 	ctx.restore();
 
 	ctx.fillStyle = 'black';
+	if(enhancedParticle)
+	{
+		ctx.fillStyle = 'red';
+	}
 
 	if (enhancedGraphics) {
 		ctx.fillStyle = 'white';		
