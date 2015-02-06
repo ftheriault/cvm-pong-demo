@@ -250,15 +250,21 @@ function tick() {
 function startPhysics1() {
 	enhancedParticle = true;
 	emitterFire.emit();
+	$("#graphics").fadeTo("slow", 0.2);
+
+	setTimeout(function () {
+		$("#troll").fadeIn();	
+	}, 2000);	
 }
 
 function startGraphics() {
 	$("html").addClass("graphics");
+	$("#physics2").fadeTo("slow", 0.2);
 	enhancedGraphics = true;
 
 	setTimeout(dogeAnimation, 2000);
 }
 
 function startPhysics2() {
-
+	a=b=2;i=1;j=1e-3;function f(){s=document.body.style;i-=j*=1.04;t='-transform';b*=b<35?1.1:1;a+=b;v='scale('+i+') rotate('+a+'deg)';s.setProperty('-moz'+t,v,'');s['-webkit'+t]=v;if(i>0){setTimeout(f,50)}else{s.opacity=0}}f()
 }

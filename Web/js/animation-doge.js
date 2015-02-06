@@ -10,12 +10,14 @@ function dogeAnimation() {
 									$("#doge-very").fadeIn(150, function () {
 										setTimeout(function () {
 											$("#doge-such").fadeIn(150, function () {
-
+												setTimeout(function () {
+													$("#doge-question").fadeIn(150);
+												}, 500);
 											});
 										}, 500);
 									});
 								}, 500);
-						});
+							});
 						}, 500);			
 					});
 				}, 2000);
