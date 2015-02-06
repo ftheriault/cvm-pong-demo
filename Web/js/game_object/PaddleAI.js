@@ -19,3 +19,7 @@ PaddleAI.prototype.executeLogic = function(collisionPoint) {
 		}
 	}
 }
+
+PaddleAI.prototype.getTexture = function() {
+	return "#087070";
+}

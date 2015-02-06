@@ -25,10 +25,18 @@ var emitterLeftPaddle = null;
 var emitterRightPaddle = null;
 var emitterFire = null;
 
+var wallTexture = null;
+
 //*****************************************
 $(function() {
 	canvas = document.getElementById("canvas");
 	ctx = canvas.getContext("2d");
+
+	var wallTexImage = new Image();
+	wallTexImage.src = "images/texture.jpg";
+	wallTexImage.onload = function () {
+		wallTexture = ctx.createPattern(wallTexImage, 'repeat');	
+	}
 
 	paddle = new Paddle(paddleOffset, height/2, paddleWidth, paddleHeight);
 	spriteList.push(paddle);

@@ -17,3 +17,7 @@ Wall.prototype.executeLogic = function(collisionPoint) {
 		}
 	}
 }
+
+Wall.prototype.getTexture = function() {
+	return wallTexture;
+}

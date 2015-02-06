@@ -38,3 +38,7 @@ Paddle.prototype.executeLogic = function(collisionPoint) {
 		ball.paddleHit();
 	}
 }
+
+Paddle.prototype.getTexture = function() {
+	return "#087070";
+}

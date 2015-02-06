@@ -32,6 +32,10 @@ CommonPaddle.prototype.executeLogic = function(collisionPoint) {
 	// Must be redefined in children in order to add logic to paddle
 }
 
+CommonPaddle.prototype.getTexture = function() {
+	// Must be redefined in children
+}
+
 CommonPaddle.prototype.tick = function() {
 	var collisionPoint = this.checkCollision();
 	this.executeLogic(collisionPoint);
@@ -44,8 +48,9 @@ CommonPaddle.prototype.tick = function() {
 	ctx.fillStyle = "black";
 
 	if (enhancedGraphics) {
-		ctx.fillStyle = "white";		
+		ctx.fillStyle = this.getTexture();				
 	}
-
+	
 	ctx.fillRect(this.x - this.width/2, this.y - this.height/2, this.width, this.height);
+	
 }
