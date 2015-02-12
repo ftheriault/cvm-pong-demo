@@ -73,25 +73,26 @@ function createPaddleEmitter(direction)
 	//Paddle emitter
 	var myEmitter = new Proton.Emitter();
 	//set Rate
-	myEmitter.rate = new Proton.Rate(Proton.getSpan(8, 12), 0.1);
+	myEmitter.rate = new Proton.Rate(Proton.getSpan(15, 20), 0.1);
 	//add Initialize
-	myEmitter.addInitialize(new Proton.Radius(5,8));
-	myEmitter.addInitialize(new Proton.Life(2, 3));
+	myEmitter.addInitialize(new Proton.Radius(1,4));
+	myEmitter.addInitialize(new Proton.Life(0.5, 1));
 	//myEmitter.addInitialize(new Proton.V(new Proton.Span(1,3), new Proton.Span(0, 10), 'vector'));
 
+	var minSpeed = 2.0;
+	var maxSpeed = 5.0;
 	if(direction ==  "left")
 	{
-		myEmitter.addInitialize(new Proton.V(new Proton.Span(0.5, 3), new Proton.Span(90, 45, true), 'polar'));
+		myEmitter.addInitialize(new Proton.V(new Proton.Span(minSpeed, maxSpeed), new Proton.Span(70, 40, true), 'polar'));
 	}else
 	{
-		myEmitter.addInitialize(new Proton.V(new Proton.Span(0.5, 3), new Proton.Span(-90, 45, true), 'polar'));
+		myEmitter.addInitialize(new Proton.V(new Proton.Span(minSpeed, maxSpeed), new Proton.Span(-70, 40, true), 'polar'));
 	}
 	//Behavior
-	myEmitter.addBehaviour(new Proton.Gravity(15));
-	myEmitter.addBehaviour(new Proton.Color('#000000', ['#ff0000', '#ffffff']));
-	myEmitter.addBehaviour(new Proton.Alpha(1, 1));
-	myEmitter.addBehaviour(new Proton.CrossZone(new Proton.RectZone(0, 0, canvas.width, canvas.height), 'bound'));
-	myEmitter.damping = 0.02;
+	myEmitter.addBehaviour(new Proton.Gravity(-3));
+	myEmitter.addBehaviour(new Proton.Color('#000000', ['#555555', '#dddddd']));
+	myEmitter.addBehaviour(new Proton.Alpha(1, 0.6));
+	myEmitter.damping = 0.1;
 
 	//set emitter position
 	myEmitter.p.x = canvas.width / 2;
