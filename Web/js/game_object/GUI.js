@@ -14,3 +14,8 @@ GUI.prototype.tick = function() {
 	ctx.fillText("" + this.scoreAI, width/2 - 60, 60);
 	ctx.fillText("" + this.scorePlayer, width/2 + 40, 60);
 }
+
+GUI.prototype.reset = function () {
+	this.scorePlayer = 0;
+	this.scoreAI = 0;
+}

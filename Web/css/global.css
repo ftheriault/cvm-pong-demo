@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=VT323);
+
 * {
 	margin:0;
 	padding:0;
@@ -5,6 +7,7 @@
 
 html, body {
 	height:100%;
+	overflow: hidden;
 }
 
 .container {
@@ -70,10 +73,23 @@ html, body {
 #doge-ma {
 	position:absolute;
 	right:10px;
-	top:30px;
+	top:40px;
 	width:200px;
 	height:200px;
-	background-image: url('../images/lavoie.jpg');
+	background-image: url('../images/lavoie.png');
+	background-repeat: no-repeat;
+}
+
+#player-frame {
+	position:absolute;
+	right:0px;
+	top:0px;
+	width:220px;
+	height:250px;
+	opacity: 0.6;
+	background-size: cover;
+	z-index:2;
+	background-image: url('../images/gui/panel-3.png');
 }
 
 #doge-face {
@@ -105,4 +121,43 @@ html, body {
 	width:160px;
 	height:145px;
 	background-image: url('../images/troll.png');
+}
+
+#menu {
+	font-family: 'VT323';
+	display: none;
+	background-image: url('../images/gui/panel-1.png');
+	width:425px;
+	height:235px;
+	margin: 0 auto;
+	padding:100px;
+	color:white;
+	text-shadow:0 0 5px black;
+}
+
+#menu h1{	
+	font-size:50px;
+}
+
+#menu p{	
+	font-size:20px;
+	width:0;
+	white-space: nowrap;
+	position: relative;
+	overflow: hidden;
+}
+
+.glow {
+	opacity:0;
+	text-shadow: 0 0 15px #6cbdd0;
+}
+
+.option {
+	display: none;
+	margin-top:30px;
+	font-size:40px;
+}
+
+.blink {
+
 }

@@ -1,5 +1,6 @@
 function dogeAnimation() {
 	$("#doge-ma").fadeIn("normal", function() {
+		$("#player-frame").fadeIn(3000);
 		setTimeout(function () {
 			$("#doge-face").fadeIn("fast", function() {
 				setTimeout(function () {

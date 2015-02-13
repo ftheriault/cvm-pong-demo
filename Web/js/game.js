@@ -1,6 +1,7 @@
 var ctx = null;
 var canevas = null;
 var spriteList = [];
+var mustEndGame = false;
 
 var width = 800;
 var height = 400;
@@ -65,6 +66,9 @@ $(function() {
 
 
 	initParticle();
+
+
+	setInterval(blinker, 1000);
 });
 
 //*****************************************
@@ -245,7 +249,13 @@ function tick() {
 		spriteList[i].tick();
 	}
 
-	window.requestAnimationFrame(tick);
+	if (mustEndGame) {
+		mustEndGame = false;
+		gui.reset();
+	}
+	else {
+		window.requestAnimationFrame(tick);
+	}
 }
 
 function startPhysics1() {
@@ -259,13 +269,54 @@ function startPhysics1() {
 }
 
 function startGraphics() {
-	$("html").addClass("graphics");
 	$("#physics2").fadeTo("slow", 0.2);
-	enhancedGraphics = true;
+	$("#troll").fadeOut();	
 
-	setTimeout(dogeAnimation, 2000);
+	$("#canvas").fadeOut("normal",function () {
+		$("html").addClass("graphics");
+		mustEndGame = true;
+
+		setTimeout(function () {
+			$("#menu").fadeIn(500, function () {
+				$("#menu-text").fadeIn("normal", function () {
+					setTimeout(function () {
+						$(".glow").animate({opacity:1}, 1000, function () {
+							$("#menu p").animate({
+								width:"100%"
+							}, 2000, function () {
+								$("#menu .option").fadeIn(500, function () {
+									setTimeout(dogeAnimation, 2000);
+
+									document.onclick = function (e) {
+										document.onclick = null;
+										$("#doge-container").fadeOut();
+										$("#menu").fadeOut(500, function () {
+											$("#canvas").fadeIn();
+											startGameWithGraphics();
+										});
+									}
+								});
+							})
+						})
+					}, 1000);
+				});
+			});		
+		}, 1000)		
+	});
+	
+	
+}
+
+function startGameWithGraphics() {
+	enhancedGraphics = true;
+	tick();
 }
 
 function startPhysics2() {
+	$(".bottom-menu").css("display", "none");
 	a=b=2;i=1;j=1e-3;function f(){s=document.body.style;i-=j*=1.04;t='-transform';b*=b<35?1.1:1;a+=b;v='scale('+i+') rotate('+a+'deg)';s.setProperty('-moz'+t,v,'');s['-webkit'+t]=v;if(i>0){setTimeout(f,50)}else{s.opacity=0}}f()
+}
+
+function blinker() {
+    $('.blink').fadeOut(500).fadeIn(500);
 }
