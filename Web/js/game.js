@@ -278,7 +278,11 @@ function startGraphics() {
 
 		setTimeout(function () {
 			$("#menu").fadeIn(500, function () {
+				document.getElementById("music").volume = 0.5;
 				document.getElementById("music").play();
+				setTimeout(function () {
+					document.getElementById("music").pause();
+				}, 14000);
 				$("#menu-text").fadeIn("normal", function () {
 					setTimeout(function () {
 						$(".glow").animate({opacity:1}, 1000, function () {
