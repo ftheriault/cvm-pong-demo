@@ -258,9 +258,10 @@ function tick() {
 	}
 }
 
-function startPhysics1() {
+function startPhysics1(btn) {
 	enhancedParticle = true;
 	emitterFire.emit();
+	btn.style.display = "none";
 	$("#graphics").fadeTo("slow", 0.2);
 
 	setTimeout(function () {
@@ -268,12 +269,14 @@ function startPhysics1() {
 	}, 2000);	
 }
 
-function startGraphics() {
+function startGraphics(btn) {
+	btn.style.display = "none";
 	$("#physics2").fadeTo("slow", 0.2);
 	$("#troll").fadeOut();	
 
 	$("#canvas").fadeOut("normal",function () {
 		$("html").addClass("graphics");
+		$("#troll").fadeOut();
 		mustEndGame = true;
 
 		setTimeout(function () {
@@ -317,8 +320,11 @@ function startGameWithGraphics() {
 	tick();
 }
 
-function startPhysics2() {
+function startPhysics2(element) {
 	$(".bottom-menu").css("display", "none");
+	document.getElementById("flush").volume = 0.5;
+	document.getElementById("flush").play();
+
 	a=b=2;i=1;j=1e-3;function f(){s=document.body.style;i-=j*=1.04;t='-transform';b*=b<35?1.1:1;a+=b;v='scale('+i+') rotate('+a+'deg)';s.setProperty('-moz'+t,v,'');s['-webkit'+t]=v;if(i>0){setTimeout(f,50)}else{s.opacity=0}}f()
 }
 

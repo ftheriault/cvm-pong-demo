@@ -32,9 +32,9 @@
 			</div>
 		</div>
 		<div class="bottom-menu">
-			<button type="button" onclick="startPhysics1()" id="physics1">Physics</button>
-			<button type="button" onclick="startGraphics()" id="graphics">Graphics</button>
-			<button type="button" onclick="startPhysics2()" id="physics2">Physics 2</button>
+			<button type="button" onclick="startPhysics1(this)" id="physics1">Physics</button>
+			<button type="button" onclick="startGraphics(this)" id="graphics">Graphics</button>
+			<button type="button" onclick="startPhysics2(this)" id="physics2">Physics 2</button>
 		</div>
 
 		
@@ -53,6 +53,10 @@
 
 		<audio id="music">
   			<source src="assets/music.mp3" type="audio/mpeg">
+  		</audio>
+
+		<audio id="flush">
+  			<source src="assets/flush.mp3" type="audio/mpeg">
   		</audio>
 	</div>
 </body>
