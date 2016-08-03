@@ -8,7 +8,7 @@ var height = 400;
 var wallThickness = 8;
 var ballRadius = 8;
 
-var paddleWidth = 6;
+var paddleWidth = 8;
 var paddleHeight = 60;
 var paddleOffset = 40;
 
