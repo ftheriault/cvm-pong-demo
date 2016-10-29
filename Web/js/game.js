@@ -262,7 +262,7 @@ function startPhysics1(btn) {
 	enhancedParticle = true;
 	emitterFire.emit();
 	btn.style.display = "none";
-	$("#graphics").fadeTo("slow", 0.2);
+	$("#graphics").fadeTo("slow", 0.3);
 
 	setTimeout(function () {
 		$("#troll").fadeIn();	
@@ -271,7 +271,7 @@ function startPhysics1(btn) {
 
 function startGraphics(btn) {
 	btn.style.display = "none";
-	$("#physics2").fadeTo("slow", 0.2);
+	$("#physics2").fadeTo("slow", 0.3);
 	$("#troll").fadeOut();	
 
 	$("#canvas").fadeOut("normal",function () {
