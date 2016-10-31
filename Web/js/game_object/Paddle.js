@@ -28,10 +28,20 @@ Paddle.prototype.control = function(eventCode, isDown) {
 
 Paddle.prototype.executeLogic = function(collisionPoint) {
 	if (this.direction < 0) {
-		this.moveUp();
+		if (game3d == null) {
+			this.moveUp();
+		}
+		else {
+			this.moveDown();	
+		}
 	}
 	else if (this.direction > 0) {
-		this.moveDown();
+		if (game3d == null) {
+			this.moveDown();
+		}
+		else {
+			this.moveUp();
+		}
 	}
 
 	if (collisionPoint != null) {

@@ -28,6 +28,8 @@ var emitterFire = null;
 
 var wallTexture = null;
 
+var game3d = null;
+
 //*****************************************
 $(function() {
 	canvas = document.getElementById("canvas");
@@ -234,16 +236,27 @@ function ballHitPaddle() {
 
 
 function tick() {
-	ctx.clearRect(0, 0, width, height);
+	if (!enhancedGraphics) {
+		ctx.clearRect(0, 0, width, height);
 
-	if(emitterFire != null)
-	{
-		fireEmitter.addInitialize(new Proton.V(new Proton.Span(0,0), new Proton.Span(0, 45, true), 'polar'));
-		emitterFire.p.x = ball.x;
-		emitterFire.p.y = ball.y;
+		if(emitterFire != null)
+		{
+			fireEmitter.addInitialize(new Proton.V(new Proton.Span(0,0), new Proton.Span(0, 45, true), 'polar'));
+			emitterFire.p.x = ball.x;
+			emitterFire.p.y = ball.y;
+		}
+
+		proton.update();
 	}
-
-	proton.update();
+	else {
+		if (game3d == null) {
+			ctx.clearRect(0, 0, width, height);
+			canvas.style.display = "none";
+			game3d = new Game3D(document.getElementById("3d-container"), width, height);
+		}
+		
+		game3d.tick();
+	}
 
 	for (var i = 0; i < spriteList.length; i++) {
 		spriteList[i].tick();

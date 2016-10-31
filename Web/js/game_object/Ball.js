@@ -3,6 +3,7 @@ function Ball(radius, onCollision) {
 	this.radius = radius;
 	this.newRound();
 	this.onCollision = onCollision;
+	this.sphere3d = null;
 }
 
 Ball.prototype.newRound = function() {
@@ -40,23 +41,37 @@ Ball.prototype.tick = function() {
 		this.y -= y;
 	}
 
-	// drawing ball
-	ctx.save();
-	ctx.beginPath();
-	ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-	ctx.restore();
+	if (game3d == null) {
+		// drawing ball
+		ctx.save();
+		ctx.beginPath();
+		ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+		ctx.restore();
 
-	ctx.fillStyle = 'black';
+		ctx.fillStyle = 'black';
 
-	if(enhancedGraphics)
-	{
-		ctx.fillStyle = 'white';
+		if(enhancedGraphics)
+		{
+			ctx.fillStyle = 'white';
+		}
+
+		if(enhancedParticle)
+		{
+			ctx.fillStyle = 'red';
+		}
+
+		ctx.fill();
 	}
+	else {
+		if (this.sphere3d == null) {
+			var geometry = new THREE.SphereGeometry( 8, 32, 32 );
+			var material = new THREE.MeshBasicMaterial( {color: 0xdd0000} );
+			this.sphere3d = new THREE.Mesh( geometry, material );
+			this.sphere3d.position.z = 0;
+			game3d.scene.add( this.sphere3d );
+		}
 
-	if(enhancedParticle)
-	{
-		ctx.fillStyle = 'red';
+		this.sphere3d.position.x = this.x - width/2;
+		this.sphere3d.position.y = this.y;
 	}
-
-	ctx.fill();
 }
